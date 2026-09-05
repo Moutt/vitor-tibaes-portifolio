@@ -125,7 +125,7 @@ export const education: Education[] = [
 
 export const contactInfo: ContactInfo[] = [
   { icon: Mail, label: 'Email', value: 'vitortibaes@gmail.com', href: 'mailto:vitortibaes@gmail.com' },
-  { icon: Phone, label: 'Telefone', value: '+55 (11) 97258-2494', href: 'tel:+5511972582494' },
+  { icon: Phone, label: 'WhatsApp', value: '+55 (11) 97258-2494', href: 'https://wa.me/5511972582494' },
   { icon: LinkedinIcon, label: 'LinkedIn', value: 'linkedin.com/in/vitor-tibães', href: 'https://linkedin.com/in/vitor-tib%C3%A3es-a8a2a2235/' },
   { icon: MapPin, label: 'Localização', value: 'São Paulo, SP - Brasil', href: null },
 ]
