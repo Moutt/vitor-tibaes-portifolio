@@ -132,6 +132,7 @@ export const contactInfo: ContactInfo[] = [
 
 export const navLinks = [
   { label: 'Sobre', href: '#sobre' },
+  { label: 'Projetos', href: '#projetos' },
   { label: 'Experiência', href: '#experiencia' },
   { label: 'Habilidades', href: '#habilidades' },
   { label: 'Formação', href: '#formacao' },
@@ -139,3 +140,60 @@ export const navLinks = [
 ]
 
 export const dailyTools = ['AWS', 'Python', 'SQL', 'Power BI', 'QuickSight']
+
+export type ProjectMedia =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; src: string; poster?: string }
+
+export interface Project {
+  id: string
+  title: string
+  description: string
+  thumbnail: string
+  tags: string[]
+  media: ProjectMedia[]
+  longDescription: string
+  link?: string
+}
+
+export const projects: Project[] = [
+  {
+    id: 'dashboard-kpis',
+    title: 'Dashboard de KPIs — Itaú Unibanco',
+    description: 'Painel gerencial no Amazon QuickSight para acompanhamento de KPIs e OKRs estratégicos.',
+    thumbnail: 'https://placehold.co/600x400/0f172a/6366f1?text=Dashboard+KPIs',
+    tags: ['QuickSight', 'AWS', 'SQL', 'ETL'],
+    longDescription:
+      'Desenvolvimento de dashboards gerenciais no Amazon QuickSight integrados a pipelines ETL em AWS Glue e Athena, permitindo o acompanhamento em tempo real de KPIs e OKRs para as equipes de negócio do Itaú Unibanco. A solução inclui controle de acesso granular, governança de dados e atualização automática das métricas.',
+    media: [
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/6366f1?text=Dashboard+KPIs+-+Visão+Geral', alt: 'Visão Geral do Dashboard' },
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/8b5cf6?text=Dashboard+KPIs+-+Análise', alt: 'Análise de KPIs' },
+    ],
+  },
+  {
+    id: 'pipeline-datalake',
+    title: 'Pipeline ETL & Data Lake — AWS',
+    description: 'Arquitetura de Data Lake escalável na AWS com pipelines de ingestão e tratamento de dados.',
+    thumbnail: 'https://placehold.co/600x400/0f172a/f59e0b?text=ETL+Pipeline',
+    tags: ['Python', 'AWS Glue', 'S3', 'Athena', 'Data Lake'],
+    longDescription:
+      'Estruturação de Data Lake na AWS com múltiplas camadas (raw, trusted, refined). Os pipelines ETL foram desenvolvidos em Python e AWS Glue, realizando ingestão de dados do SharePoint e outras fontes, tratamento, validação e disponibilização para consumo via Athena e QuickSight.',
+    media: [
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/f59e0b?text=Arquitetura+Data+Lake', alt: 'Arquitetura Data Lake AWS' },
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/ef4444?text=Pipeline+ETL', alt: 'Pipeline ETL' },
+    ],
+  },
+  {
+    id: 'bi-prometeon',
+    title: 'BI Interativo — Prometeon',
+    description: 'Suite de dashboards interativos em Power BI, Grafana e Dremio para operações industriais.',
+    thumbnail: 'https://placehold.co/600x400/0f172a/10b981?text=Power+BI+Dashboards',
+    tags: ['Power BI', 'Grafana', 'Dremio', 'SQL Server'],
+    longDescription:
+      'Criação de dashboards interativos para monitoramento de KPIs operacionais da Prometeon Tyre Group. As soluções integram dados de múltiplas fontes (SQL Server, Excel, SharePoint) e foram construídas em Power BI, Grafana e Dremio, com automações em Power Automate e Power Apps.',
+    media: [
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/10b981?text=Power+BI+Dashboard', alt: 'Power BI Dashboard' },
+      { type: 'image', src: 'https://placehold.co/800x500/0f172a/06b6d4?text=Grafana+Dashboard', alt: 'Grafana Dashboard' },
+    ],
+  },
+]
