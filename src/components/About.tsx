@@ -21,9 +21,9 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Sou estudante de{' '}
+                Graduando em{' '}
                 <span className="text-foreground font-medium">Ciência da Computação</span> na
-                Universidade Presbiteriana Mackenzie (bolsista ProUni) e atualmente estagiário de
+                Universidade Presbiteriana Mackenzie (bolsista ProUni) e atualmente trabalhando com
                 Análise de Dados no{' '}
                 <span className="text-primary font-medium">Itaú Unibanco</span>.
               </p>
