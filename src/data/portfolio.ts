@@ -206,7 +206,7 @@ export const projects: Project[] = [
         poster: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
       },
     ],
-    link: 'https://lnkd.in/d4jf77ar',
+    link: 'https://github.com/Moutt/Financial-Planning-Analysis',
   },
 ]
 
