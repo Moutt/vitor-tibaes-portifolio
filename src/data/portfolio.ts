@@ -132,6 +132,7 @@ export const contactInfo: ContactInfo[] = [
 
 export const navLinks = [
   { label: 'Sobre', href: '#sobre' },
+  { label: 'Projetos', href: '#projetos' },
   { label: 'Experiência', href: '#experiencia' },
   { label: 'Habilidades', href: '#habilidades' },
   { label: 'Formação', href: '#formacao' },
@@ -139,3 +140,73 @@ export const navLinks = [
 ]
 
 export const dailyTools = ['AWS', 'Python', 'SQL', 'Power BI', 'QuickSight']
+
+export type ProjectMedia =
+  | { type: 'image'; src: string; alt: string }
+  | { type: 'video'; src: string; poster?: string }
+
+export interface Project {
+  id: string
+  title: string
+  description: string
+  thumbnail: string
+  tags: string[]
+  media: ProjectMedia[]
+  longDescription: string
+  link?: string
+}
+
+export const projects: Project[] = [
+  {
+    id: 'google-trends-analytics',
+    title: 'Análise de Tendências em Data Analytics',
+    description:
+      'Análise de tendências de busca no Google Trends sobre Data Analytics, com classificação automática, pipeline ETL e persistência em AWS S3.',
+    thumbnail: '/vitor-tibaes-portifolio/projects/google-trends/dashboard.png',
+    tags: ['Python', 'Pandas', 'SerpAPI', 'AWS S3', 'Google Trends'],
+    longDescription:
+      'Desenvolvi este projeto com o objetivo de analisar tendências de busca no Google Trends, explorando temas diversos a partir de dados. O foco desta análise foi Data Analytics — uma área em forte crescimento e cada vez mais estratégica para o mercado.\n\nA partir da coleta dos dados, identifiquei um alto interesse em tópicos como o Gartner Data & Analytics Summit, além de cursos e formações em Data Analytics — incluindo nomes que eu ainda não conhecia, como Harry Data Analytics. O projeto acabou sendo também uma ótima forma de expandir minha visão sobre o ecossistema de dados e oportunidades de aprendizado.\n\nStack e abordagem técnica:\n• Extração de dados via SerpAPI (Google Trends)\n• Tratamento e análise com Python e Pandas\n• Classificação automática das tendências (explosiva, em alta, estável)\n• Persistência dos dados em AWS S3, simulando uma camada bronze de um data lake\n• Criação de dashboard para visualização e análise dos insights\n\nPrincipais aprendizados:\n• Coleta e padronização de dados externos\n• Enriquecimento com metadados para rastreabilidade\n• Boas práticas de engenharia de dados e analytics\n• Uso de dados para apoiar decisões e direcionar aprendizado',
+    media: [
+      {
+        type: 'image',
+        src: '/vitor-tibaes-portifolio/projects/google-trends/dashboard.png',
+        alt: 'Dashboard de Tendências Google Trends — Data Analytics',
+      },
+      {
+        type: 'image',
+        src: '/vitor-tibaes-portifolio/projects/google-trends/codigo.png',
+        alt: 'Código Python — Extração e Classificação de Tendências',
+      },
+    ],
+    link: 'https://github.com/Moutt/google_trends_searches',
+  },
+  {
+    id: 'fpa-variance-analysis',
+    title: 'FP&A Variance Analysis & Executive Intelligence',
+    description:
+      'Ecossistema analítico ponta a ponta para FP&A e Controle Orçamentário (OPEX): do pipeline ETL ao dashboard executivo com simulações de Monte Carlo.',
+    thumbnail: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
+    tags: ['Python', 'Pandas', 'DuckDB', 'AWS S3', 'FastAPI', 'Monte Carlo'],
+    longDescription:
+      'Projeto ponta a ponta focado em FP&A (Financial Planning & Analysis) e Controle Orçamentário (OPEX). O objetivo foi transformar dados financeiros brutos em um ecossistema analítico capaz de responder não apenas o que aconteceu, mas por que aconteceu e qual é o risco futuro.\n\nPrincipais destaques:\n• Curva ABC (Pareto): Identificação dos centros de custo críticos que concentram mais de 65% do OPEX corporativo (Operations, Finance e Marketing)\n• Detecção de Anomalias: Algoritmos baseados em Z-Score (|Z| ≥ 1.96) e IQR para mapear desvios fora da curva antes do fechamento do trimestre\n• Rigor Estatístico: Testes de Hipóteses (t pareado, Wilcoxon, ANOVA e Kruskal-Wallis) para validar se desvios eram aleatórios ou fruto de viés orçamentário estrutural\n• Simulação de Monte Carlo: 10.000 iterações estocásticas para quantificar a probabilidade de estouro do orçamento anual (~49%) e gerar intervalos de confiança a 95%\n\nArquitetura e Tecnologias:\n• Pipeline ETL modular em Python & Pandas\n• Integração de Data Lake na AWS S3 (camada Bronze)\n• Consultas analíticas in-memory de alta performance com DuckDB (SQL)\n• Dashboard Executivo web desenvolvido com FastAPI, Tailwind CSS e Apache ECharts\n\nO resultado é um diagnóstico com plano de ação em 5 pilares estratégicos: Rolling Forecast, ZBB e travas orçamentárias dinâmicas.',
+    media: [
+      {
+        type: 'image',
+        src: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
+        alt: 'FP&A Intelligence — Dashboard Executivo',
+      },
+      {
+        type: 'image',
+        src: '/vitor-tibaes-portifolio/projects/fpa-variance/analise.png',
+        alt: 'Matriz de Materialidade e Simulador What-If',
+      },
+      {
+        type: 'video',
+        src: '/vitor-tibaes-portifolio/projects/fpa-variance/demo.mp4',
+        poster: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
+      },
+    ],
+    link: 'https://lnkd.in/d4jf77ar',
+  },
+]
+
