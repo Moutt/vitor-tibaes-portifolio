@@ -109,7 +109,7 @@ export const education: Education[] = [
   {
     institution: 'Universidade Presbiteriana Mackenzie',
     degree: 'Bacharelado em Ciência da Computação',
-    period: 'Previsão: 02/2026',
+    period: 'Previsão: 12/2026',
     status: 'Em andamento',
     highlight: 'Bolsista ProUni',
     current: true,
