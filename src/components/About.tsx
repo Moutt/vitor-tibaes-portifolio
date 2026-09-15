@@ -39,6 +39,11 @@ export default function About() {
                 Possuo perfil analítico, com foco na padronização de dados, criação de dashboards e
                 suporte à tomada de decisão estratégica.
               </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Meu TCC é focado em{' '}
+                <span className="text-foreground font-medium">Inteligência Artificial e Machine Learning</span>
+                , explorando aplicações práticas dessas tecnologias para análise e tomada de decisão baseada em dados.
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
