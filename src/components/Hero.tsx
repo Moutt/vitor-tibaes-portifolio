@@ -1,11 +1,104 @@
+import { useState, useEffect } from 'react'
 import { Mail, ChevronDown } from 'lucide-react'
 import { LinkedinIcon } from '@/components/icons/LinkedinIcon'
 import { Button } from '@/components/ui/button'
+
+// Each line: plain text for typing + colored JSX for after it's fully typed
+const JSON_LINES = [
+  {
+    plain: '"cargo": "Analista de Dados",',
+    node: (
+      <>
+        <span className="text-primary-foreground/30">"cargo": </span>
+        <span className="text-primary-foreground/80">"Analista de Dados"</span>
+        <span className="text-primary-foreground/25">,</span>
+      </>
+    ),
+  },
+  {
+    plain: '"empresa": "Itaú Unibanco",',
+    node: (
+      <>
+        <span className="text-primary-foreground/30">"empresa": </span>
+        <span className="text-primary font-medium">"Itaú Unibanco"</span>
+        <span className="text-primary-foreground/25">,</span>
+      </>
+    ),
+  },
+  {
+    plain: '"stack": ["AWS", "Python", "SQL", "Excel"],',
+    node: (
+      <>
+        <span className="text-primary-foreground/30">"stack": </span>
+        <span className="text-primary-foreground/25">{'['}</span>
+        <span className="text-accent font-medium">"AWS"</span>
+        <span className="text-primary-foreground/25">, </span>
+        <span className="text-accent font-medium">"Python"</span>
+        <span className="text-primary-foreground/25">, </span>
+        <span className="text-accent font-medium">"SQL"</span>
+        <span className="text-primary-foreground/25">, </span>
+        <span className="text-accent font-medium">"Excel"</span>
+        <span className="text-primary-foreground/25">{']'}</span>
+        <span className="text-primary-foreground/25">,</span>
+      </>
+    ),
+  },
+  {
+    plain: '"foco": "Dados → Insights estratégicos"',
+    node: (
+      <>
+        <span className="text-primary-foreground/30">"foco": </span>
+        <span className="text-primary-foreground/80">"Dados → Insights estratégicos"</span>
+      </>
+    ),
+  },
+]
+
+const TYPING_SPEED = 32  // ms per character
+const LINE_PAUSE   = 120 // ms pause between lines
 
 export default function Hero() {
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const [showOpen,  setShowOpen]  = useState(false)
+  const [lineIdx,   setLineIdx]   = useState(0)
+  const [charIdx,   setCharIdx]   = useState(0)
+  const [showClose, setShowClose] = useState(false)
+
+  // Step 1 — show opening brace after a short delay
+  useEffect(() => {
+    const t = setTimeout(() => setShowOpen(true), 400)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Step 2 — type each line character by character
+  useEffect(() => {
+    if (!showOpen) return
+
+    if (lineIdx >= JSON_LINES.length) {
+      // All lines done → show closing brace
+      const t = setTimeout(() => setShowClose(true), LINE_PAUSE)
+      return () => clearTimeout(t)
+    }
+
+    const lineLen = JSON_LINES[lineIdx].plain.length
+
+    if (charIdx < lineLen) {
+      const t = setTimeout(() => setCharIdx(c => c + 1), TYPING_SPEED)
+      return () => clearTimeout(t)
+    } else {
+      // Line complete → move to next
+      const t = setTimeout(() => {
+        setLineIdx(l => l + 1)
+        setCharIdx(0)
+      }, LINE_PAUSE)
+      return () => clearTimeout(t)
+    }
+  }, [showOpen, lineIdx, charIdx])
+
+  const isTypingDone = showClose
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-dark overflow-hidden">
@@ -28,17 +121,39 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-primary-foreground/70 mb-6 font-light">
-            Analista de Dados
-          </p>
+          {/* JSON typewriter */}
+          <div className="inline-block text-left mb-10 font-mono text-sm md:text-base">
 
-          <p className="text-lg text-primary-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Transformando dados em insights estratégicos através de
-            <span className="text-accent font-medium"> AWS</span>,
-            <span className="text-primary font-medium"> Python</span> e
-            <span className="text-primary font-medium"> SQL</span>. Atualmente no{' '}
-            <span className="font-medium text-primary-foreground/80">Itaú Unibanco</span>.
-          </p>
+            {/* Opening brace */}
+            {showOpen && (
+              <div className="text-primary-foreground/25 mb-1">{'{'}</div>
+            )}
+
+            {/* Lines */}
+            <div className="pl-5 space-y-1">
+              {JSON_LINES.map((line, i) => {
+                if (i < lineIdx) {
+                  // Fully typed — render with colors
+                  return <div key={i}>{line.node}</div>
+                }
+                if (i === lineIdx && !isTypingDone) {
+                  // Currently typing — plain text + blinking cursor
+                  return (
+                    <div key={i} className="text-primary-foreground/65">
+                      {line.plain.slice(0, charIdx)}
+                      <span className="inline-block w-[2px] h-[1em] bg-primary/70 ml-px align-middle animate-pulse" />
+                    </div>
+                  )
+                }
+                return null // hidden
+              })}
+            </div>
+
+            {/* Closing brace */}
+            {showClose && (
+              <div className="text-primary-foreground/25 mt-1">{'}'}</div>
+            )}
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button

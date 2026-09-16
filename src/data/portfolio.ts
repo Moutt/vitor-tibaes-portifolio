@@ -1,3 +1,4 @@
+import type React from 'react'
 import { Cloud, Database, BarChart3, Code, Mail, Phone, MapPin } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { LinkedinIcon } from '@/components/icons/LinkedinIcon'
@@ -9,6 +10,7 @@ export interface Experience {
   current: boolean
   description: string[]
   technologies: string[]
+  logo?: string
 }
 
 export interface SkillCategory {
@@ -33,17 +35,34 @@ export interface ContactInfo {
   href: string | null
 }
 
+
 export interface Pillar {
-  icon: LucideIcon
+  icon: React.ComponentType<{ className?: string }>
   title: string
-  description: string
+  items: string[]
 }
 
 export const pillars: Pillar[] = [
-  { icon: Cloud, title: 'Cloud AWS', description: 'S3, Glue, Athena, QuickSight' },
-  { icon: Database, title: 'ETL & Data Lake', description: 'Pipelines de dados escaláveis' },
-  { icon: BarChart3, title: 'Business Intelligence', description: 'Power BI, Grafana, Dashboards' },
-  { icon: Code, title: 'Programação', description: 'Python, SQL, Automação' },
+  {
+    icon: Cloud,
+    title: 'Cloud AWS',
+    items: ['S3', 'Glue', 'Athena', 'QuickSight'],
+  },
+  {
+    icon: Database,
+    title: 'ETL & Data Lake',
+    items: ['Python', 'SQL', 'Pandas', 'matplotlib & numpy'],
+  },
+  {
+    icon: BarChart3,
+    title: 'Business Intelligence',
+    items: ['Power BI', 'Grafana', 'Dremio', 'Excel'],
+  },
+  {
+    icon: Code,
+    title: 'Programação',
+    items: ['Python', 'SQL', 'FastAPI', 'Git'],
+  },
 ]
 
 export const experiences: Experience[] = [
@@ -60,6 +79,7 @@ export const experiences: Experience[] = [
       'Liderança na migração de dados do SharePoint para AWS, garantindo escalabilidade e democratização do acesso aos dados',
     ],
     technologies: ['Python', 'SQL', 'AWS Glue', 'S3', 'Athena', 'QuickSight', 'ETL', 'Data Lake'],
+    logo: '/vitor-tibaes-portifolio/logos/itau.png',
   },
   {
     company: 'Prometeon',
@@ -74,6 +94,7 @@ export const experiences: Experience[] = [
       'Análise e tratamento de dados provenientes de múltiplas fontes, incluindo Excel e SharePoint',
     ],
     technologies: ['Power BI', 'Grafana', 'Power Automate', 'Power Apps', 'SQL Server', 'Figma', 'Dremio'],
+    logo: '/vitor-tibaes-portifolio/logos/prometeon.png',
   },
 ]
 
@@ -109,7 +130,7 @@ export const education: Education[] = [
   {
     institution: 'Universidade Presbiteriana Mackenzie',
     degree: 'Bacharelado em Ciência da Computação',
-    period: 'Previsão: 12/2026',
+    period: 'Previsão: 02/2026',
     status: 'Em andamento',
     highlight: 'Bolsista ProUni',
     current: true,
@@ -206,6 +227,7 @@ export const projects: Project[] = [
         poster: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
       },
     ],
+    link: 'https://lnkd.in/d4jf77ar',
     link: 'https://github.com/Moutt/Financial-Planning-Analysis',
   },
 ]
