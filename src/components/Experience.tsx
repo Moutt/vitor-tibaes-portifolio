@@ -1,7 +1,8 @@
-import { Briefcase, Calendar } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { experiences } from '@/data/portfolio'
+import CareerChart from '@/components/CareerChart'
 
 export default function Experience() {
   return (
@@ -23,6 +24,7 @@ export default function Experience() {
             </p>
           </div>
 
+          {/* Experience cards */}
           <div className="space-y-8">
             {experiences.map((exp, index) => (
               <Card
@@ -40,17 +42,25 @@ export default function Experience() {
                 <CardHeader className="pb-4">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex items-start gap-4">
+                      {/* Company logo */}
                       <div
-                        className={`p-3 rounded-xl ${
-                          exp.current ? 'bg-gradient-primary' : 'bg-muted'
-                        }`}
+                        className={`w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${
+                          exp.current ? 'ring-2 ring-primary/40' : 'ring-1 ring-border/50'
+                        } bg-white`}
                       >
-                        <Briefcase
-                          className={`h-6 w-6 ${
-                            exp.current ? 'text-primary-foreground' : 'text-muted-foreground'
-                          }`}
-                        />
+                        {exp.logo ? (
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="w-full h-full object-contain p-1"
+                          />
+                        ) : (
+                          <span className="text-xl font-bold text-muted-foreground">
+                            {exp.company[0]}
+                          </span>
+                        )}
                       </div>
+
                       <div>
                         <h3 className="text-xl font-bold">{exp.company}</h3>
                         <p className="text-muted-foreground">{exp.role}</p>
@@ -94,6 +104,10 @@ export default function Experience() {
               </Card>
             ))}
           </div>
+
+          {/* Career trajectory chart */}
+          <CareerChart />
+
         </div>
       </div>
     </section>
