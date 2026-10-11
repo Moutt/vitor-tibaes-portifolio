@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Presentation as PresentationIcon } from 'lucide-react'
 import { navLinks } from '@/data/portfolio'
 import { Button } from '@/components/ui/button'
+import Presentation from '@/components/Presentation'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showPresentation, setShowPresentation] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50)
@@ -45,6 +47,10 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
+            <Button size="sm" className="ml-2 bg-gradient-primary hover:opacity-90" onClick={() => setShowPresentation(true)}>
+              <PresentationIcon className="mr-2 h-4 w-4" />
+              Apresentação
+            </Button>
           </div>
 
           {/* Mobile toggle */}
@@ -71,10 +77,17 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
+              <button
+                onClick={() => { setIsMenuOpen(false); setShowPresentation(true) }}
+                className="px-4 py-3 text-sm font-medium text-primary hover:bg-secondary/50 rounded-lg text-left transition-colors"
+              >
+                Apresentação
+              </button>
             </div>
           </div>
         )}
       </div>
+      {showPresentation && <Presentation onClose={() => setShowPresentation(false)} />}
     </nav>
   )
 }
