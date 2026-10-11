@@ -115,7 +115,6 @@ function SlideAbout2() {
         </div>
         <div className="flex items-center justify-center gap-10">
           <Volleyball className={iconCls} />
-          <Trophy className={iconCls} />
           <Bike className={iconCls} />
         </div>
       </div>

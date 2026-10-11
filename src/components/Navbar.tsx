@@ -47,9 +47,8 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <Button size="sm" className="ml-2 bg-gradient-primary hover:opacity-90" onClick={() => setShowPresentation(true)}>
-              <PresentationIcon className="mr-2 h-4 w-4" />
-              Apresentação
+            <Button size="icon" aria-label="Apresentação" title="Apresentação" className="ml-2 bg-gradient-primary hover:opacity-90" onClick={() => setShowPresentation(true)}>
+              <PresentationIcon className="h-5 w-5" />
             </Button>
           </div>
 
