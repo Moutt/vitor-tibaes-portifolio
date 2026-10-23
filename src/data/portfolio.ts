@@ -227,8 +227,27 @@ export const projects: Project[] = [
         poster: '/vitor-tibaes-portifolio/projects/fpa-variance/dashboard.png',
       },
     ],
-    link: 'https://lnkd.in/d4jf77ar',
+
     link: 'https://github.com/Moutt/Financial-Planning-Analysis',
+  },
+  {
+    id: 'cybersecurity-analytics',
+    title: 'CyberSecurity Analytics — Risco e Priorização de Vulnerabilidades',
+    description:
+      'Case de Data Analytics em CyberSecurity: tratamento de qualidade de dados, indicadores de risco e priorização de remediação de vulnerabilidades.',
+    thumbnail: '/vitor-tibaes-portifolio/projects/cyber_security/Dashboard_1.png',
+    tags: ['Python', 'SQL', 'DuckDB', 'Pandas', 'Power BI', 'Matplotlib'],
+    longDescription:
+      'Estudo de dados da área de CyberSecurity para responder: qual é o nível atual de exposição ao risco? Quais ativos demandam maior atenção? Onde priorizar os esforços de correção? O processo atual de tratamento de vulnerabilidades está sendo efetivo?\n\nAs bases (200 ativos e 2.000 vulnerabilidades) vieram com problemas típicos de ambiente corporativo — datas em formatos diferentes, datas impossíveis, categorias escritas de várias formas e ativos fora do inventário — então boa parte do trabalho foi entender e tratar os dados antes de qualquer análise.\n\nPrincipais resultados:\n• 77% das vulnerabilidades (1.531 de 2.000) continuam sem correção, sendo 172 críticas pelo CVSS\n• O risco está espalhado: os 10 ativos com maior score somam apenas ~14% do risco total\n• 75 itens entram na fila P1 de prioridade; ~24% do backlog está em ativos em desativação\n• Taxa de correção de 23%: entram ~216 vulnerabilidades por mês e saem ~43, então o backlog só cresce\n\nIndicadores criados:\n• Score de risco por ativo (CVSS × criticidade × ambiente)\n• Fila de prioridade P1 a P4\n• Idade do backlog e taxa/tempo de correção\n\nStack e abordagem técnica:\n• Limpeza e modelagem em SQL (DuckDB) executada via Python\n• Análise exploratória e de risco em notebooks com Pandas, NumPy, Matplotlib e Seaborn\n• Dashboard de acompanhamento em Power BI\n\nRecomendações: mutirão nos itens P1, revisão dos riscos aceitos com CVSS alto, descomissionamento de ativos em desativação, SLA por prioridade e correção da qualidade dos dados na origem.',
+    media: [
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Dashboard_1.png', alt: 'Dashboard de Acompanhamento de Indicadores — visão 1' },
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Dashboard_2.png', alt: 'Dashboard de Acompanhamento de Indicadores — visão 2' },
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Dashboard_3.png', alt: 'Dashboard de Acompanhamento de Indicadores — visão 3' },
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Analise_1.png', alt: 'Análise de risco — gráfico 1' },
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Analise_2.png', alt: 'Análise de risco — gráfico 2' },
+      { type: 'image', src: '/vitor-tibaes-portifolio/projects/cyber_security/Analise_3.png', alt: 'Análise de risco — gráfico 3' },
+    ],
+    link: 'https://github.com/Moutt/CyberSecurity-Analytics',
   },
 ]
 
